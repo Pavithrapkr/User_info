@@ -1,0 +1,7 @@
+.personal-info{
+    margin-top:10px;
+}
+
+input:focus{
+    outline:none;
+}

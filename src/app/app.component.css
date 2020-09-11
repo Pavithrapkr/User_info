@@ -1,0 +1,26 @@
+.profile-img {
+    padding-top: 30px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+.profie-name{
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 25px;
+}
+
+a {
+    font-size: large;
+    color:white;
+    margin-left:25px;
+    margin-right: 25px;
+}
+
+nav .active{
+    border-bottom: 2px solid #fb8913;
+    color: #fb8913;
+    /* font-weight: bold; */
+}
