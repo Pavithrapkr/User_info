@@ -2,26 +2,144 @@
     <form>
         <div class="row form-group justify-content-center font-weight-bold">
             <h4 class="col-sm-3">Overview</h4>
-            <label class="col-sm-2">Changes Saved</label>
+            <label class="col-sm-2 text-success">Changes Saved</label>
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="person">person</mat-icon>
             <div class="row col-sm-4 border-dotted">
-                <label class="col-sm-1 col-form-label">Title:</label>
-                <div class="col-sm-7">
-                    <input class="form-control border-0 shadow-none" value="Abc">
+                <label class="col-sm-2 col-form-label">Title:</label>
+                <div class="col-sm-8">
+                    <input class="form-control border-0 shadow-none" disabled="display.title" placeholder="Add a title">
                 </div>
-                <button type="button" class="btn btn-xs btn-size shadow-none">
-                    <mat-icon color="primary" aria-label="edit">edit</mat-icon>
-                </button>
-                <button type="button" class="btn btn-xs btn-size shadow-none">
-                    <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
-                </button>
-                <button type="button" class="btn btn-xs btn-size shadow-none">
-                    <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
-                </button>
+                <div class="col-sm-2 d-flex justify-content-end">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.title">
+                        <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.title">
+                        <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.title">
+                        <mat-icon color="primary" aria-label="edit">edit</mat-icon>
+                    </button>
+                </div>
             </div>
-            
+        </div>
+        <div class="row form-group justify-content-center">
+            <mat-icon class="field-icon" aria-label="email">email</mat-icon>
+            <div class="row col-sm-4 border-dotted">
+                <label class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control border-0 shadow-none text-primary" disabled="display.email" value={{mail}}>
+                </div>
+                <div class="col-sm-2 d-flex justify-content-end">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.email">
+                        <mat-icon class="color-primary" aria-label="content_copy">content_copy</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.email">
+                        <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.email">
+                        <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.email">
+                        <mat-icon color="primary" aria-label="edit">edit</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group justify-content-center">
+            <mat-icon class="field-icon" aria-label="call">call</mat-icon>
+            <div class="row col-sm-4 border-dotted">
+                <label class="col-sm-2 col-form-label">Phone:</label>
+                <div class="col-sm-8">
+                    <input class="form-control border-0 shadow-none"  placeholder="Add a phone number" disabled="display.phone">
+                </div>
+                <div class="col-sm-2 d-flex justify-content-end">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.phone">
+                        <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.phone">
+                        <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.phone">
+                        <mat-icon color="primary" aria-label="edit">edit</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group justify-content-center">
+            <mat-icon class="field-icon" aria-label="location_on">location_on</mat-icon>
+            <div class="row col-sm-4 border-dotted">
+                <label class="col-sm-2 col-form-label">Location:</label>
+                <div class="col-sm-8">
+                    <input class="form-control border-0 shadow-none" placeholder="Add a title" disabled="display.location">
+                </div>
+                <div class="col-sm-2 d-flex justify-content-end">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.location">
+                        <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.location">
+                        <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.location">
+                        <mat-icon color="primary" aria-label="edit">edit</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group justify-content-center">
+            <mat-icon class="field-icon" aria-label="access_time">access_time</mat-icon>
+            <div class="row col-sm-4 border-dotted">
+                <label class="col-sm-2 col-form-label">Timezone:</label>
+                <div class="col-sm-8">
+                    <input class="form-control border-0 shadow-none text-primary" value={{timezone}}>
+                </div>
+                <div class="col-sm-2 ">
+                    <button type="button" class="btn btn-xs btn-size shadow-none">
+                        <mat-icon class="color-primary" aria-label="content_copy">content_copy</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group justify-content-center">
+            <mat-divider ></mat-divider>
+            <!-- <hr class="hr-style"> -->
+        </div>
+        <div class="row form-group justify-content-center">
+            <h4>Change your password</h4>
+        </div>
+        <div class="row form-group justify-content-center">
+            <label class="label-style col-sm-2 col-form-label">Current Password</label>
+            <div class="border-solid row form-group col-sm-3">
+                <input class="form-control border-0 shadow-none" >
+            </div>
+        </div>
+        <div class="row form-group justify-content-center">
+            <label class="label-style col-sm-2 col-form-label d-flex justify-content-start ">New Password</label>
+            <div class="border-solid row form-group col-sm-3">
+                <input class="col-sm-9 form-control border-0 shadow-none" >
+                <div class="col-sm-3 d-flex justify-content-end">
+                    <label class="col-sm-0.6 col-form-label color-green">{{percentage}}</label>
+                    <label class="col-sm-0.6 col-form-label color-red">/100</label>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group justify-content-center">
+            <label class="label-style col-sm-2 col-form-label">Re-type Password</label>
+            <div class="border-solid row form-group col-sm-3 ">
+                <input class="col-sm-9 form-control border-0 shadow-none" >
+                <div class="col-sm-3 d-flex justify-content-end">
+                    <button type="button" class="btn btn-xs btn-size shadow-none">
+                        <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-size shadow-none">
+                        <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
+                    </button>
+                </div>  
+            </div>        
+        </div>
+        <div class="row justify-content-center">
+            <button class="btn-sm justify-content-end btn btn-primary rounded-pill">Save Changes</button>
         </div>
     </form>
 </div>

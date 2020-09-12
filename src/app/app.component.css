@@ -24,3 +24,11 @@ nav .active{
     color: #fb8913;
     /* font-weight: bold; */
 }
+
+.layout {
+    overflow-x:hidden;
+}
+
+.tab-content-align {
+    margin-top: 10px;
+}

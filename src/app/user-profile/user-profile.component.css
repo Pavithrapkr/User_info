@@ -2,6 +2,10 @@
     margin-top:10px;
 }
 
+input {
+    background-color: transparent !important;
+}
+
 input:focus{
     outline:none;
 }
@@ -31,6 +35,20 @@ input:focus{
     color:red !important;
 }
 
+.color-primary{
+    color:#007bff;
+}
+
 .border-dotted:hover{
-    border: 1px #007bff dashed;
+    border: 1px #6c757d dashed;
+    padding:-10px;
+}
+
+.border-solid {
+    border: 1px #a7abaf solid;
+    border-radius: 25px;
+}
+
+.label-style{
+    margin-right: 30px !important;
 }

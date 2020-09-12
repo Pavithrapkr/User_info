@@ -8,6 +8,16 @@ import {DataService} from '../data.service';
   providers: [DataService]
 })
 export class UserProfileComponent implements OnInit {
+  
+  mail='sjayakumar@mindlogic.com';
+  timezone='(GMT+05.00) Ekaterinburg';
+  percentage=0;
+  display = {
+    title : true,
+    email : true,
+    phone : true,
+    location: true
+  }
 
   constructor() { }
 
