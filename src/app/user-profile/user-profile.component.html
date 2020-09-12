@@ -1,7 +1,7 @@
-<div class="form-group">
+<div class="container-sm form-group">
     <form [formGroup]="userForm">
-        <div class="row form-group justify-content-center font-weight-bold">
-            <h5 class="col-sm-3">Overview</h5>
+        <div class="row form-group font-weight-bold">
+            <h5 class="col-sm-5 d-flex justify-content-end">Overview</h5>
             <label class="col-sm-2 text-success" *ngIf="isSaved">Changes Saved</label>
         </div>
         <div class="row form-group justify-content-center">
@@ -105,7 +105,7 @@
             <mat-divider ></mat-divider>
         </div>
         <div class="row form-group justify-content-center">
-            <h5>Change your password</h5>
+            <h5 class="col-sm-5 d-flex justify-content-start">Change your password</h5>
         </div>
         <div class="row form-group justify-content-center">
             <label class="label-style col-sm-2 col-form-label">Current Password</label>
