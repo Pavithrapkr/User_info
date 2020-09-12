@@ -5,3 +5,32 @@
 input:focus{
     outline:none;
 }
+
+.field-icon {
+    border-radius: 50% !important;
+    border: 1px solid #007bff;
+    color: #007bff;
+    height: 35px;
+    width: 35px;
+    align-items: center;
+    vertical-align: middle;
+    align-content: space-around;
+    margin-right: 20px;
+    font-size: 32px;
+}
+
+.btn-size{
+    padding:0px !important;
+}
+
+.color-green {
+    color: green !important;
+}
+
+.color-red{
+    color:red !important;
+}
+
+.border-dotted:hover{
+    border: 1px #007bff dashed;
+}
