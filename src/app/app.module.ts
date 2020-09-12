@@ -7,6 +7,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,10 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    ReactiveFormsModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

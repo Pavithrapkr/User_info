@@ -1,24 +1,24 @@
 <div class="form-group">
-    <form>
+    <form [formGroup]="userForm">
         <div class="row form-group justify-content-center font-weight-bold">
-            <h4 class="col-sm-3">Overview</h4>
-            <label class="col-sm-2 text-success">Changes Saved</label>
+            <h5 class="col-sm-3">Overview</h5>
+            <label class="col-sm-2 text-success" *ngIf="isSaved">Changes Saved</label>
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="person">person</mat-icon>
             <div class="row col-sm-4 border-dotted">
                 <label class="col-sm-2 col-form-label">Title:</label>
                 <div class="col-sm-8">
-                    <input class="form-control border-0 shadow-none" disabled="display.title" placeholder="Add a title">
+                    <input class="form-control border-0 shadow-none" formControlName="title" placeholder="Add a title">
                 </div>
                 <div class="col-sm-2 d-flex justify-content-end">
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.title">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="saveChanges('title')" *ngIf="!disable.title">
                         <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.title">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="cancelChanges('title')" *ngIf="!disable.title">
                         <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.title">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="disable.title" (click)="editInput('title')">
                         <mat-icon color="primary" aria-label="edit">edit</mat-icon>
                     </button>
                 </div>
@@ -29,19 +29,19 @@
             <div class="row col-sm-4 border-dotted">
                 <label class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control border-0 shadow-none text-primary" disabled="display.email" value={{mail}}>
+                    <input type="email" class="form-control border-0 shadow-none text-primary" formControlName="email">
                 </div>
                 <div class="col-sm-2 d-flex justify-content-end">
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.email">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" [cdkCopyToClipboard]="copyContent('email')" *ngIf="disable.email">
                         <mat-icon class="color-primary" aria-label="content_copy">content_copy</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.email">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="saveChanges('email')" *ngIf="!disable.email">
                         <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.email">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="cancelChanges('email')" *ngIf="!disable.email">
                         <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.email">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="disable.email" (click)="editInput('email')">
                         <mat-icon color="primary" aria-label="edit">edit</mat-icon>
                     </button>
                 </div>
@@ -52,16 +52,16 @@
             <div class="row col-sm-4 border-dotted">
                 <label class="col-sm-2 col-form-label">Phone:</label>
                 <div class="col-sm-8">
-                    <input class="form-control border-0 shadow-none"  placeholder="Add a phone number" disabled="display.phone">
+                    <input class="form-control border-0 shadow-none"  placeholder="Add a phone number" formControlName="phone" >
                 </div>
                 <div class="col-sm-2 d-flex justify-content-end">
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.phone">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="saveChanges('phone')" *ngIf="!disable.phone">
                         <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.phone">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="cancelChanges('phone')" *ngIf="!disable.phone">
                         <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.phone">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="disable.phone" (click)="editInput('phone')">
                         <mat-icon color="primary" aria-label="edit">edit</mat-icon>
                     </button>
                 </div>
@@ -72,16 +72,16 @@
             <div class="row col-sm-4 border-dotted">
                 <label class="col-sm-2 col-form-label">Location:</label>
                 <div class="col-sm-8">
-                    <input class="form-control border-0 shadow-none" placeholder="Add a title" disabled="display.location">
+                    <input class="form-control border-0 shadow-none" placeholder="Add a title" formControlName="location">
                 </div>
                 <div class="col-sm-2 d-flex justify-content-end">
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.location">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="saveChanges('location')" *ngIf="!disable.location">
                         <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="!display.location">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="cancelChanges('location')" *ngIf="!disable.location">
                         <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="display.location">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="disable.location" (click)="editInput('location')">
                         <mat-icon color="primary" aria-label="edit">edit</mat-icon>
                     </button>
                 </div>
@@ -92,10 +92,10 @@
             <div class="row col-sm-4 border-dotted">
                 <label class="col-sm-2 col-form-label">Timezone:</label>
                 <div class="col-sm-8">
-                    <input class="form-control border-0 shadow-none text-primary" value={{timezone}}>
+                    <input class="form-control border-0 shadow-none text-primary" disabled=true formControlName="timezone">
                 </div>
                 <div class="col-sm-2 ">
-                    <button type="button" class="btn btn-xs btn-size shadow-none">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" [cdkCopyToClipboard]="copyContent('timezone')">
                         <mat-icon class="color-primary" aria-label="content_copy">content_copy</mat-icon>
                     </button>
                 </div>
@@ -103,21 +103,20 @@
         </div>
         <div class="form-group justify-content-center">
             <mat-divider ></mat-divider>
-            <!-- <hr class="hr-style"> -->
         </div>
         <div class="row form-group justify-content-center">
-            <h4>Change your password</h4>
+            <h5>Change your password</h5>
         </div>
         <div class="row form-group justify-content-center">
             <label class="label-style col-sm-2 col-form-label">Current Password</label>
             <div class="border-solid row form-group col-sm-3">
-                <input class="form-control border-0 shadow-none" >
+                <input class="form-control border-0 shadow-none" formControlName="currentPassword">
             </div>
         </div>
         <div class="row form-group justify-content-center">
             <label class="label-style col-sm-2 col-form-label d-flex justify-content-start ">New Password</label>
             <div class="border-solid row form-group col-sm-3">
-                <input class="col-sm-9 form-control border-0 shadow-none" >
+                <input type="password" class="col-sm-9 form-control border-0 shadow-none" formControlName="newPassword" (input)="validatePassword()">
                 <div class="col-sm-3 d-flex justify-content-end">
                     <label class="col-sm-0.6 col-form-label color-green">{{percentage}}</label>
                     <label class="col-sm-0.6 col-form-label color-red">/100</label>
@@ -126,20 +125,21 @@
         </div>
         <div class="row form-group justify-content-center">
             <label class="label-style col-sm-2 col-form-label">Re-type Password</label>
-            <div class="border-solid row form-group col-sm-3 ">
-                <input class="col-sm-9 form-control border-0 shadow-none" >
+            <div [class.error]="incorrectPassword" class="border-solid row form-group col-sm-3 ">
+                <input type="password" class="col-sm-9 form-control border-0 shadow-none" formControlName="confirmPassword">
                 <div class="col-sm-3 d-flex justify-content-end">
-                    <button type="button" class="btn btn-xs btn-size shadow-none">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="clearPassword()">
                         <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="confirmPassword()">
                         <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
                     </button>
                 </div>  
-            </div>        
+            </div>       
         </div>
-        <div class="row justify-content-center">
-            <button class="btn-sm justify-content-end btn btn-primary rounded-pill">Save Changes</button>
+        <div class="text-danger row form-group justify-content-center" *ngIf="incorrectPassword">*Password Wrong</div>
+        <div class="row form-group  justify-content-center">
+            <button class="btn-md justify-content-end btn btn-primary rounded-pill" (click)="saveForm()">Save Changes</button>
         </div>
     </form>
 </div>

@@ -1,5 +1,5 @@
 .profile-img {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-right: 15px;
     padding-bottom: 10px;
     padding-left: 15px;
@@ -9,11 +9,11 @@
     font-size: x-large;
     font-weight: bold;
     color: white;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 a {
-    font-size: large;
+    font-size: medium;
     color:white;
     margin-left:25px;
     margin-right: 25px;
