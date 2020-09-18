@@ -11,16 +11,12 @@ import {DataService} from '../data.service';
 export class UserProfileComponent implements OnInit {
   userForm :FormGroup;
   userDetails:Object;
-  isSaved = false;
-  percentage=0;
-  incorrectPassword = false;
-
-  disable  = {
-    title : true,
-    email : true,
-    phone : true,
-    location: true
-  }
+  isSaved :boolean= false;
+  percentage:number=0;
+  incorrectPassword : boolean= false;
+  correctPassword :boolean= false;
+  isPasswordError:boolean=false;
+  disable : any;
 
   savedValue = {
     title : '',
@@ -40,6 +36,7 @@ export class UserProfileComponent implements OnInit {
       newPassword: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required)
     });
+    this.resetDisplay();
   }
 
   ngOnInit(): void {
@@ -66,8 +63,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveForm() {
-    this.userDetails = this.userForm.getRawValue();
-    console.log(JSON.stringify(this.userDetails));
+    if(!this.incorrectPassword){
+      this.isPasswordError=false;
+      this.resetDisplay();
+      this.userDetails = this.userForm.getRawValue();
+      console.log(JSON.stringify(this.userDetails));
+    }else{
+      this.isPasswordError=true;
+    }
   }
 
   copyContent (value:any) {
@@ -85,13 +88,27 @@ export class UserProfileComponent implements OnInit {
   }
 
   confirmPassword() {
-    this.incorrectPassword = (this.userForm.controls['newPassword'].value === 
-        this.userForm.controls['confirmPassword'].value) ? false : true;
+    if(this.percentage>60 && (this.userForm.controls['newPassword'].value === this.userForm.controls['confirmPassword'].value)){
+      this.incorrectPassword = false;
+      this.correctPassword = true;
+    }else if(this.percentage>=20){
+      this.incorrectPassword = true;
+      this.correctPassword = false;
+    }
   }
 
   clearPassword() {
     this.incorrectPassword = false;
     this.userForm.controls['confirmPassword'].setValue('');
+  }
+
+  resetDisplay(){
+    this.disable= {
+      title : true,
+      email : true,
+      phone : true,
+      location: true
+    };
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="container-sm form-group">
+<div class="container container-sm form-group">
     <form [formGroup]="userForm">
         <div class="row form-group font-weight-bold">
             <h5 class="col-sm-5 d-flex justify-content-end">Overview</h5>
@@ -6,7 +6,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="person">person</mat-icon>
-            <div class="row col-sm-4 border-dotted">
+            <div class="row col-sm-5 border-dotted">
                 <label class="col-sm-2 col-form-label">Title:</label>
                 <div class="col-sm-8">
                     <input class="form-control border-0 shadow-none" formControlName="title" placeholder="Add a title">
@@ -26,7 +26,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="email">email</mat-icon>
-            <div class="row col-sm-4 border-dotted">
+            <div class="row col-sm-5 border-dotted">
                 <label class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-8">
                     <input type="email" class="form-control border-0 shadow-none text-primary" formControlName="email">
@@ -49,7 +49,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="call">call</mat-icon>
-            <div class="row col-sm-4 border-dotted">
+            <div class="row col-sm-5 border-dotted">
                 <label class="col-sm-2 col-form-label">Phone:</label>
                 <div class="col-sm-8">
                     <input class="form-control border-0 shadow-none"  placeholder="Add a phone number" formControlName="phone" >
@@ -69,10 +69,10 @@
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="location_on">location_on</mat-icon>
-            <div class="row col-sm-4 border-dotted">
+            <div class="row col-sm-5 border-dotted">
                 <label class="col-sm-2 col-form-label">Location:</label>
                 <div class="col-sm-8">
-                    <input class="form-control border-0 shadow-none" placeholder="Add a title" formControlName="location">
+                    <input class="form-control border-0 shadow-none" placeholder="Add Location" formControlName="location">
                 </div>
                 <div class="col-sm-2 d-flex justify-content-end">
                     <button type="button" class="btn btn-xs btn-size shadow-none" (click)="saveChanges('location')" *ngIf="!disable.location">
@@ -89,7 +89,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <mat-icon class="field-icon" aria-label="access_time">access_time</mat-icon>
-            <div class="row col-sm-4 border-dotted">
+            <div class="row col-sm-5 border-dotted">
                 <label class="col-sm-2 col-form-label">Timezone:</label>
                 <div class="col-sm-8">
                     <input class="form-control border-0 shadow-none text-primary" disabled=true formControlName="timezone">
@@ -110,7 +110,7 @@
         <div class="row form-group justify-content-center">
             <label class="label-style col-sm-2 col-form-label">Current Password</label>
             <div class="border-solid row form-group col-sm-3">
-                <input class="form-control border-0 shadow-none" formControlName="currentPassword">
+                <input type="password" class="form-control border-0 shadow-none" formControlName="currentPassword">
             </div>
         </div>
         <div class="row form-group justify-content-center">
@@ -125,19 +125,19 @@
         </div>
         <div class="row form-group justify-content-center">
             <label class="label-style col-sm-2 col-form-label">Re-type Password</label>
-            <div [class.error]="incorrectPassword" class="border-solid row form-group col-sm-3 ">
-                <input type="password" class="col-sm-9 form-control border-0 shadow-none" formControlName="confirmPassword">
+            <div [class.error]="isPasswordError" class="border-solid row form-group col-sm-3 ">
+                <input type="password" class="col-sm-9 form-control border-0 shadow-none" formControlName="confirmPassword" (input)="confirmPassword()">
                 <div class="col-sm-3 d-flex justify-content-end">
-                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="clearPassword()">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="incorrectPassword" (click)="clearPassword()">
                         <mat-icon class="color-red" aria-label="cancel">cancel</mat-icon>
                     </button>
-                    <button type="button" class="btn btn-xs btn-size shadow-none" (click)="confirmPassword()">
+                    <button type="button" class="btn btn-xs btn-size shadow-none" *ngIf="correctPassword" >
                         <mat-icon class="color-green" aria-label="check_circle">check_circle</mat-icon>
                     </button>
                 </div>  
             </div>       
         </div>
-        <div class="text-danger row form-group justify-content-center" *ngIf="incorrectPassword">*Password Wrong</div>
+        <div class="text-danger row form-group justify-content-center" *ngIf="isPasswordError">*Password Wrong</div>
         <div class="row form-group  justify-content-center">
             <button class="btn-md justify-content-end btn btn-primary rounded-pill" (click)="saveForm()">Save Changes</button>
         </div>
